@@ -100,8 +100,9 @@ const BookAppointmentPage = () => {
             value={doctorName || ""}
             onChange={(e) => setDoctorName(e.target.value)}
             required
+            className="select-doctor"
           >
-            <option value="">Select a Doctor</option>
+            <option value="" className="select-doctor">Select a Doctor</option>
             {doctors.map((doc) => (
               <option key={doc.id} value={doc.id}>
                 {doc.name}

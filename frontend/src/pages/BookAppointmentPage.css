@@ -82,3 +82,36 @@ textarea {
 .btn-secondary:hover {
   background-color: #5a6268;
 }
+
+/* BookAppointmentPage.css */
+
+.select-doctor {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: #fff;
+  color: #444;
+  appearance: none; /* Remove default arrow in modern browsers */
+  -webkit-appearance: none; /* Remove default arrow for older webkit browsers */
+  -moz-appearance: none; /* Remove default arrow for older Firefox */
+  cursor: pointer;
+}
+
+.select-doctor:focus {
+  outline: none; /* Remove focus outline */
+  border-color: #007bff; /* Change border color on focus */
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Add a light blue glow on focus */
+}
+
+.select-doctor option {
+  padding: 10px;
+  background-color: #fff;
+  color: #444;
+}
+
+.select-doctor option:first-child {
+  color: #999; /* Light placeholder text color */
+}
