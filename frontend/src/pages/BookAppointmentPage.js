@@ -91,68 +91,78 @@ const BookAppointmentPage = () => {
   };
 
   return (
-    <div className="container">
-      <h1 className="page-title">Book an Appointment</h1>
-      <form onSubmit={handleSubmit} className="appointment-form">
-        <div className="form-group">
-          <label>Doctor Name:</label>
-          <select
-            value={doctorName || ""}
-            onChange={(e) => setDoctorName(e.target.value)}
-            required
-            className="select-doctor"
+    <div>
+      <header className="header">
+        <div className="header-content">
+          <h1>Book an Appointment</h1>
+        </div>
+      </header>
+      <div className="container">
+        <form onSubmit={handleSubmit} className="appointment-form">
+          <div className="form-group">
+            <label>Doctor Name:</label>
+            <select
+              value={doctorName || ""}
+              onChange={(e) => setDoctorName(e.target.value)}
+              required
+              className="select-doctor"
+            >
+              <option value="" className="select-doctor">Select a Doctor</option>
+              {doctors.map((doc) => (
+                <option key={doc.id} value={doc.id}>
+                  {doc.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
+            <label>Patient Name:</label>
+            <input
+              type="text"
+              value={patientName}
+              onChange={(e) => setPatientName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Appointment Time:</label>
+            <input
+              type="datetime-local"
+              value={date_time}
+              onChange={(e) => setDate_time(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Reason for Appointment:</label>
+            <textarea
+              value={reason}
+              onChange={(e) => setReason(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+          <button type="submit" className="btn">
+            Submit
+          </button>
+          {showSuccessPopup && (
+            <Notification
+              message="Appointment booked successfully!"
+              onClose={() => setShowSuccessPopup(false)}
+            />
+          )}
+          </div>
+          <div>
+          <button
+            type="button"
+            className="btn btn-secondary"
+            onClick={() => navigate("/home")}
           >
-            <option value="" className="select-doctor">Select a Doctor</option>
-            {doctors.map((doc) => (
-              <option key={doc.id} value={doc.id}>
-                {doc.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="form-group">
-          <label>Patient Name:</label>
-          <input
-            type="text"
-            value={patientName}
-            onChange={(e) => setPatientName(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Appointment Time:</label>
-          <input
-            type="datetime-local"
-            value={date_time}
-            onChange={(e) => setDate_time(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Reason for Appointment:</label>
-          <textarea
-            value={reason}
-            onChange={(e) => setReason(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit" className="btn">
-          Submit
-        </button>
-        {showSuccessPopup && (
-          <Notification
-            message="Appointment booked successfully!"
-            onClose={() => setShowSuccessPopup(false)}
-          />
-        )}
-        <button
-          type="button"
-          className="btn btn-secondary"
-          onClick={() => navigate("/")}
-        >
-          Cancel
-        </button>
-      </form>
+            Cancel
+          </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

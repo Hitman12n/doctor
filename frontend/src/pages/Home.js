@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./HomePage.css"; // Import CSS file for styling
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer); // Cleanup interval on component unmount
+  }, []);
 
   const handleSignOut = () => {
     // Clear user data from local storage
@@ -39,7 +48,7 @@ const HomePage = () => {
         <div className="section">
           <h2>Medicines Available</h2>
           <p>Check the availability of medicines:</p>
-          <Link to="/medicines">
+          <Link to="/medicine">
             <button className="btn">View Medicines</button>
           </Link>
         </div>
