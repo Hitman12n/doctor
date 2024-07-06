@@ -33,7 +33,7 @@ body {
 }
 
 .input-group input {
-  width: calc(100% - 20px);
+  width: 100%; /* Full width */
   padding: 12px; /* Slightly larger padding */
   border: 1px solid #444; /* Darker border */
   border-radius: 8px; /* More rounded corners */
@@ -43,6 +43,27 @@ body {
   font-size: 16px; /* Larger font size for better readability */
 }
 
+.input-group input[type="password"] {
+  width: 100%; /* Full width */
+  padding: 12px; /* Slightly larger padding */
+  border: 1px solid #666666; /* Darker border */
+  border-radius: 8px; /* More rounded corners */
+  background-color: #444; /* Dark background for inputs */
+  color: #e0e0e0; /* Light text color */
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.input-group input[type="email"] {
+  width: 100%; /* Full width */
+  padding: 12px; /* Slightly larger padding */
+  border: 1px solid #666666; /* Darker border */
+  border-radius: 8px; /* More rounded corners */
+  background-color: #444; /* Dark background for inputs */
+  color: #e0e0e0; /* Light text color */
+  box-sizing: border-box;
+  font-size: 16px;
+}
 .input-group input::placeholder {
   color: #999; /* Light placeholder text color */
 }
