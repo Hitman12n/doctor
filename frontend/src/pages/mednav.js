@@ -20,7 +20,7 @@ const Navbar = () => {
        
         <li>
           <NavLink to="/medicine" >
-            Home
+          Medication List
           </NavLink>
         </li>
         <li>
@@ -34,6 +34,11 @@ const Navbar = () => {
           </NavLink>
         </li>
       </ul>
+      <div className='homemar'>
+      <Link to="/home" className="home-link">
+            <button className="home-btn">Home</button>
+      </Link>
+      </div>
       <div className="clock">{currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
     </nav>
   );

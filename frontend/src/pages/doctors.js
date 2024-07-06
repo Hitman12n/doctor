@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./OurDoctors.css"; // Import CSS file for styling
 
 const OurDoctors = () => {
@@ -39,7 +40,10 @@ const OurDoctors = () => {
     <div>
       <header className="header">
         <div className="header-content">
-          <h1>Our Doctors</h1>
+        <h1 className="page-title">Our Doctors</h1>
+          <Link to="/home" className="home-link">
+            <button className="home-btn">Home</button>
+          </Link>
         </div>
       </header>
       <div className="doctors-container">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 import "./BookAppointmentPage.css"; // Import CSS file for styling
 import axios from "axios";
 import Notification from "./Notification";
@@ -94,7 +94,10 @@ const BookAppointmentPage = () => {
     <div>
       <header className="header">
         <div className="header-content">
-          <h1>Book an Appointment</h1>
+        <h1 className="page-title">Book Appointment</h1>
+          <Link to="/home" className="home-link">
+            <button className="home-btn">Home</button>
+          </Link>
         </div>
       </header>
       <div className="container">

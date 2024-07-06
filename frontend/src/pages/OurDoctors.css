@@ -5,6 +5,20 @@ body {
   color: #e0e0e0; /* Light text color */
 }
 
+.home-btn {
+  background-color: #454545;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.home-btn:hover {
+  background-color: #545454;
+}
+
 .doctors-container {
   padding: 40px;
   text-align: center;
