@@ -1,10 +1,38 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./HomePage.css"; // Import CSS file for styling
 
 const HomePage = () => {
   const navigate = useNavigate();
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      const token = localStorage.getItem("token"); // Retrieve token from localStorage
+      if (!token) {
+        navigate("/login"); // Redirect to login if no token is found
+        return;
+      }
+      try {
+        const response = await axios.get(
+          "http://127.0.0.1:8000/api/current_user",
+          {
+            headers: {
+              Authorization: `token ${token}`,
+            },
+          }
+        );
+        setUser(response.data);
+      } catch (error) {
+        console.error("Error fetching user:", error);
+        // Handle error (e.g., redirect to login page if authentication fails)
+      }
+    };
+
+    fetchCurrentUser();
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -22,8 +50,8 @@ const HomePage = () => {
     navigate("/login");
   };
 
-  // Assume you have a way to get the user's name from local storage or context
-  const userName = "John Doe"; // Replace with actual user data retrieval logic
+  // Determine user name display
+  const userName = user ? user.username : "Guest"; // Fallback if user is not yet fetched
 
   return (
     <div>
@@ -32,7 +60,9 @@ const HomePage = () => {
           <h1>SeniorWell Hub</h1>
           <div className="user-info">
             <span className="user-name">{userName}</span>
-            <button className="signout-btn" onClick={handleSignOut}>Sign Out</button>
+            <button className="signout-btn" onClick={handleSignOut}>
+              Sign Out
+            </button>
           </div>
         </div>
       </header>
